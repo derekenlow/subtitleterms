@@ -83,6 +83,7 @@ class ImportDialog(QDialog, Ui_ImportDialog):
         file_extension = self.file_path.suffix[1:]
         if file_extension not in videoextensions.extensions:
             self.subtitleComboBox.setEnabled(False)
+            self.subtitleLabel.setEnabled(False)
             self.subtitleComboBox.clear()
         else:
 
@@ -91,8 +92,10 @@ class ImportDialog(QDialog, Ui_ImportDialog):
                 return streams
 
             def onSubtitleExtractSuccess(streams: dict) -> None:
+                self.subtitleComboBox.clear()
                 self.subtitleComboBox.addItems(streams.values())
                 self.subtitleComboBox.setEnabled(True)
+                self.subtitleLabel.setEnabled(True)
 
             op = QueryOp(
                 parent=mw,
