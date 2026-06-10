@@ -31,12 +31,6 @@ class LangNote(anki.collection.Note):
 
 
 class BaseDeck:
-    template = [
-        h1(".hide-rcl-f")["{{term}}"],
-        hr,
-        div(".hide-rcg-f")["{{gloss}}"],
-    ]
-
     def __init__(self, lang_from, lang_to, entry_init):
         """
         Args:
@@ -47,6 +41,15 @@ class BaseDeck:
         self.lang_from = lang_from
         self.lang_to = lang_to
         self.entrystore = EntryStore(self.name, self.Entry, entry_init)
+
+    @property
+    def template(self):
+        template = [
+            h1(".hide-rcl-f")["{{term}}"],
+            hr,
+            div(".hide-rcg-f")["{{gloss}}"],
+        ]
+        return template
 
     @property
     def name(self) -> str:

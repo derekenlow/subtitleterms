@@ -23,11 +23,16 @@ class HanEntry(BaseEntry):
 
 class ZH_Deck(BaseDeck):
     # TODO: ruby should be per character rather than whole term.
-    template = [
-        h1(".hide-rcl-f")[ruby["{{term}}", rt(".hide-rcg-f")["{{pinyin}}"]]],
-        hr,
-        div(".hide-rcg-f")["{{gloss}}"],
-    ]
+    @property
+    def template(self):
+        template = [
+            h1(".hide-rcl-f ." + self.lang_from)[
+                ruby["{{term}}", rt(".hide-rcg-f")["{{pinyin}}"]]
+            ],
+            hr,
+            div(".hide-rcg-f ." + self.lang_from)["{{gloss}}"],
+        ]
+        return template
 
     @property
     def Entry(self) -> type[BaseEntry]:
@@ -108,11 +113,13 @@ def zh_initialize(char_set) -> dict[str, HanEntry]:
             if char_set == "traditional":
                 key_char = traditional
                 other_char = simplified
+                other_class = ".zh-Hans"
             else:
                 key_char = simplified
                 other_char = traditional
+                other_class = ".zh-Hant"
             gloss = [
-                h2[span[other_char], " ", span[pinyin]],
+                h2[span(other_class)[other_char], " ", span[pinyin]],
                 ul[(li[sense] for sense in senses)],
             ]
             intermediate = (key_char, gloss, pinyin)

@@ -1,5 +1,4 @@
 .card {
-  /* TODO: Proper font-family hierarchy. */
   font-family: sans-serif;
   font-size: 22px;
   line-height: 1.5;
@@ -60,4 +59,14 @@ ul {
 
 .recollection.back .hide-rcl-b {
   opacity: 0;
+}
+
+/* General language-specific styling. */
+/* TODO: Proper font-family hierarchy. */
+.zh-Hans {
+  font-family: "Noto Sans CJK SC", sans-serif;
+}
+
+.zh-Hant {
+  font-family: "Noto Sans CJK TC", sans-serif;
 }
