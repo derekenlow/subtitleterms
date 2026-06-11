@@ -31,6 +31,4 @@ artifacts = ["src/*/vendor/*", "*.mo"]
 locale-directory = "src/subtitleterms/locales"
 [tool.hatch.build.targets.sdist.hooks.custom]
 path = "vendors.py"
-
-[tool.vendors]
-ignore = ["aqt", "requests"]
+ignore-dependencies = ["aqt", "requests"]
