@@ -73,13 +73,13 @@ class BaseDeck:
             modelmanager.add_field(newmodel, newfield)
 
         recog_template = modelmanager.new_template("Recognition")
-        recog_template["qfmt"] = str(div(".recognition .front")[self.template])
-        recog_template["afmt"] = str(div(".recognition .back")[self.template])
+        recog_template["qfmt"] = str(div(".recognition.front")[self.template])
+        recog_template["afmt"] = str(div(".recognition.back")[self.template])
         modelmanager.add_template(newmodel, recog_template)
 
         recol_template = modelmanager.new_template("Recollection")
-        recol_template["qfmt"] = str(div(".recollection .front")[self.template])
-        recol_template["afmt"] = str(div(".recollection .back")[self.template])
+        recol_template["qfmt"] = str(div(".recollection.front")[self.template])
+        recol_template["afmt"] = str(div(".recollection.back")[self.template])
         modelmanager.add_template(newmodel, recol_template)
 
         newmodel["css"] = get_css("all_lang.css")

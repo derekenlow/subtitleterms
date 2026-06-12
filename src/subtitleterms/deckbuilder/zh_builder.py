@@ -26,11 +26,11 @@ class ZH_Deck(BaseDeck):
     @property
     def template(self):
         template = [
-            h1(".hide-rcl-f ." + self.lang_from)[
+            h1(".hide-rcl-f." + self.lang_from)[
                 ruby["{{term}}", rt(".hide-rcg-f")["{{pinyin}}"]]
             ],
             hr,
-            div(".hide-rcg-f ." + self.lang_from)["{{gloss}}"],
+            div(".hide-rcg-f." + self.lang_from)["{{gloss}}"],
         ]
         return template
 
